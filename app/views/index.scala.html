@@ -1,0 +1,95 @@
+@(message:String)
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+     
+    
+    
+<div class="ajax-field" id="states"> dd</div>
+<button class="button " id="locality" value="click">click</button>
+
+
+<select class="form-control" id="selectState">
+   <option id="1" value="Andaman-and-Nicobar">Andaman and Nicobar</option>
+   <option id ="2" value="Andhra-Pradesh">Andhra Pradesh</option>
+   <option id="3" value="Arunachal-Pradesh">Arunachal Pradesh</option>
+   <option id="4" value="Assam">Assam</option>
+   <option id="5" value="Bihar">Bihar</option>
+   <option id = "6"value="Chandigarh">Chandigarh</option>
+   <option id="7"value="Chhattisgarh">Chhattisgarh</option>
+   <option id="8" value="Dadra-and-Nagar-Haveli">Dadra and Nagar Haveli</option>
+   <option id="9" value="Daman-and-Diu">Daman and Diu</option>
+   <option id="10" value="Delhi">Delhi</option>
+   <option id="11" value="Goa">Goa</option>
+   <option id="12"value="Gujarat">Gujarat</option>
+   <option id="13" value="Haryana">Haryana</option>
+   <option id="14" value="Himachal-Pradesh">Himachal Pradesh</option>
+   <option id="15"value="Jammu-and-Kashmir">Jammu and Kashmir</option>
+   <option id="16"value="Jharkhand">Jharkhand</option>
+   <option id="17" value="Karnataka">Karnataka</option>
+   <option id="18" value="Kerala">Kerala</option>
+   <option id="19"value="Lakshadweep">Lakshadweep</option>
+   <option id="20" value="Madhya-Pradesh">Madhya Pradesh</option>
+   <option id="21" value="Maharashtra">Maharashtra</option>
+   <option id="22"value="Manipur">Manipur</option>
+   <option id="23"value="Meghalaya">Meghalaya</option>
+   <option id="24"value="Mizoram">Mizoram</option>
+   <option id="25" value="Nagaland">Nagaland</option>
+   <option id="26" value="Odisha">Odisha</option>
+   <option id="27" value="Pondicherry">Pondicherry</option>
+   <option id="28" value="Punjab">Punjab</option>
+   <option id="29" value="Rajasthan">Rajasthan</option>
+   <option id="30" value="Sikkim">Sikkim</option>
+   <option id="31"value="Tamil-Nadu">Tamil Nadu</option>
+   <option id="32"value="Telangana">Telangana</option>
+   <option id="33"value="Tripura">Tripura</option>
+   <option id="34"value="Uttar-Pradesh">Uttar Pradesh</option>
+   <option id="35"value="Uttarakhand">Uttarakhand</option>
+   <option id="36"value="West-Bengal">West Bengal</option>
+</select>
+<script>
+ $(document).ready(function(){
+
+   
+	 
+	 
+			var state = $("#36").val();
+			alert(state);
+		 $.get("/get-source/"+state, function(result){	
+			 $(result).find('#selectDistrict option').each(function(){
+				 var dist = $(this).val();
+				 $.get("/get-source/" + state + "/" + dist, function(result){
+					 $(result).find('#selectCity option').each(function(){
+						 var city = $(this).val();
+					
+						$.get("/get-source/" + state + "/" + dist + "/" + city, function(result){
+							 $(result).find('#selectPostoffice option').each(function(){
+								 var post = $(this).val();
+									console.log(state+"--> "+dist+"--> "+city+"-->"+post );
+									 $.get("/get-source/" + state + "/" + dist + "/" + city+"/"+post, function(result){
+										 
+									 });
+							 });
+							 });
+					 });
+				 });
+			 });
+		 
+	 });
+
+
+
+	 
+});
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
