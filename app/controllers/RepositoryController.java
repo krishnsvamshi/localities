@@ -16,6 +16,7 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 
 import play.Logger;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -63,5 +64,10 @@ public Result getRepos() throws IOException, GitAPIException{
      }
 	return ok();
 }
+	public Result getWebHookJson(){
+		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		return ok(Json.toJson("ok"));
+	}
+
 
 }
