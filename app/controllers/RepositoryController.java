@@ -82,7 +82,7 @@ public Result getRepos() throws IOException, GitAPIException{
 		Logger.info("repository "+repository.findPath("name").asText());
 		Logger.info(" branch name "+ref.asText());
 		JsonNode j1 = json.findPath("commits");
-		
+		Logger.info(" >>>>>> commmits "+j1.asText());
 		JsonNode j2 = j1.findPath("committer");
 	//	DynamicForm loginData = Form.form().bindFromRequest();
 //	
