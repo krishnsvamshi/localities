@@ -118,7 +118,7 @@ public Result getRepos() throws IOException, GitAPIException{
 		gitNotification.save();
 		
 		
-		return ok(Json.toJson("asdfasd"));
+		 return ok(views.js.gitNotity.render(gitNotification));
 	}
 
 
