@@ -102,7 +102,8 @@ public Result getRepos() throws IOException, GitAPIException{
 			commit.committerEmail =  jsonCommit.findValue("committer").findValue("email").asText();
 			commit.userName =  jsonCommit.findValue("committer").findValue("username").asText();
 			try {
-				commit.committedAt = new Date(sdf.parse(commitTime.replace("T", " ")).getTime());
+				Logger.info("String date  "+commitTime.replace("T", " ").replace("+", " "));
+				commit.committedAt = new Date(sdf.parse(commitTime.replace("T", " ").replace("+", " ")).getTime());
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
