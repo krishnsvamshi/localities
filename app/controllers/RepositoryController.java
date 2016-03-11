@@ -15,11 +15,14 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import play.Logger;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Result;
 
@@ -70,13 +73,13 @@ public Result getRepos() throws IOException, GitAPIException{
 
 	public Result getWebHookJson(){
 		Logger.info("json recieved");
-		MultipartFormData ff =request().body().asMultipartFormData();
+		JsonNode json = request().body().asJson();
 	//	DynamicForm loginData = Form.form().bindFromRequest();
 //	
 //		String ss =loginData.toString();
-		Logger.info(" >>>>>>>>>>  json map size "+ff);
+		Logger.info(" >>>>>>>>>>  json map size "+json);
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		return ok(Json.toJson("ok"));
+		return ok(Json.toJson("asdfasd"));
 	}
 
 
