@@ -11,4 +11,5 @@ GET     /get-source/:state                 controllers.Application.getSource(sta
 GET     /get-source/:state/:district                 controllers.Application.getCitySource(state : String,district: String)
 GET     /get-source/:state/:district/:city                 controllers.Application.getPostSource(state : String,district: String,city:String)
 GET     /get-source/:state/:district/:city/:post  controllers.Application.saveLocality(state : String,district: String,city:String,post:String)
-POST     /get-repo                                  controllers.RepositoryController.getRepos()
+GET     /get-repo                                  controllers.RepositoryController.getRepos()
+GET     /get-webhook-reponse                       controllers.RepositoryController.getWebHookJson()
