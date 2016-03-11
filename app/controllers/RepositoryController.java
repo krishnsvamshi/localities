@@ -83,7 +83,7 @@ public Result getRepos() throws IOException, GitAPIException{
 		Logger.info("repository "+repository.findPath("name").asText());
 		Logger.info(" branch name "+ref.asText());
 		JsonNode commitsList = json.findValue("commits");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddTHH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		
 		GitNotification gitNotification = new GitNotification();
@@ -102,7 +102,7 @@ public Result getRepos() throws IOException, GitAPIException{
 			commit.committerEmail =  jsonCommit.findValue("committer").findValue("email").asText();
 			commit.userName =  jsonCommit.findValue("committer").findValue("username").asText();
 			try {
-				commit.committedAt = new Date(sdf.parse(commitTime).getTime());
+				commit.committedAt = new Date(sdf.parse(commitTime.replace("T", " ")).getTime());
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
