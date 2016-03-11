@@ -61,6 +61,7 @@ public Result getRepos() throws IOException, GitAPIException{
 
     	        Iterable<RevCommit> commits = git.log().all().call();
     	       int  count = 0;
+    	       
     	        for (RevCommit rev : commits) {
     	            System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
     	            count++;
