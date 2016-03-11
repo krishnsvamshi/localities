@@ -14,8 +14,10 @@ import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.JsonObject;
 
 import play.Logger;
 import play.data.DynamicForm;
@@ -75,12 +77,15 @@ public Result getRepos() throws IOException, GitAPIException{
 	public Result getWebHookJson(Long id){
 		Logger.info("json recieved------------------------ : "+id);
 		JsonNode json = request().body().asJson();
-		JsonNode j1 = json.findPath("head_commit");
+		JsonNode ref = json.findPath("ref");
+		Logger.info(ref.asText());
+		JsonNode j1 = json.findPath("commits");
+		
 		JsonNode j2 = j1.findPath("committer");
 	//	DynamicForm loginData = Form.form().bindFromRequest();
 //	
 //		String ss =loginData.toString();
-		Logger.info(" >>>>>>>>>>  json map size "+j2.findValue("email").asText());
+		Logger.info(" >>>>>>>>>>  json map size "+j1.asText());
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		return ok(Json.toJson("asdfasd"));
 	}
