@@ -1,6 +1,9 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,6 +21,8 @@ import org.eclipse.jgit.revwalk.RevWalk;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import models.GitCommit;
+import models.GitNotification;
 import play.Logger;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -77,21 +82,40 @@ public Result getRepos() throws IOException, GitAPIException{
 		JsonNode repository = json.findPath("repository");
 		Logger.info("repository "+repository.findPath("name").asText());
 		Logger.info(" branch name "+ref.asText());
-		JsonNode j1 = json.findValue("commits");
-		Iterator<JsonNode> i= j1.elements();
-		while(i.hasNext()){
-			Logger.info("commits loop");
-			JsonNode commit = i.next();
-			Logger.info("commit id---> "+commit.findValue("id").asText());
-			Logger.info("commit message---> "+commit.findValue("message").asText());
-		}
-		Logger.info(" >>>>>> commmits "+j1.elements());
-		JsonNode j2 = j1.findPath("committer");
-	//	DynamicForm loginData = Form.form().bindFromRequest();
-//	
-//		String ss =loginData.toString();
-		Logger.info(" >>>>>>>>>>  json map size "+j2.findValue("email").asText());
+		JsonNode commitsList = json.findValue("commits");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
+		GitNotification gitNotification = new GitNotification();
+		gitNotification.notificationTitle="BB8";
+		gitNotification.repositoryBranch=ref.asText().replace("refs/heads/", "");
+		gitNotification.repository = repository.asText();
+		Iterator<JsonNode> i= commitsList.elements();
+		while(i.hasNext()){
+			GitCommit commit = new GitCommit();
+			JsonNode jsonCommit = i.next();
+			commit.commitId = jsonCommit.findValue("id").asText();
+			commit.message=jsonCommit.findValue("message").asText();
+			commit.commitUrl =  jsonCommit.findValue("url").asText();
+			String commitTime = jsonCommit.findValue("timestamp").asText();
+			commit.committerName=jsonCommit.findValue("committer").findValue("name").asText();
+			commit.committerEmail =  jsonCommit.findValue("committer").findValue("email").asText();
+			commit.userName =  jsonCommit.findValue("committer").findValue("username").asText();
+			try {
+				commit.committedAt = new Date(sdf.parse(commitTime).getTime());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			gitNotification.commitsList.add(commit);
+					
+		}
+		gitNotification.noOfCommits = gitNotification.commitsList.size();
+		gitNotification.committedBy = json.findValue("pusher").findValue("name").asText();
+		gitNotification.pusherEmail = json.findValue("pusher").findValue("email").asText();
+		gitNotification.save();
+		
+		
 		return ok(Json.toJson("asdfasd"));
 	}
 
