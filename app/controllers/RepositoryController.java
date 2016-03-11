@@ -83,7 +83,7 @@ public Result getRepos() throws IOException, GitAPIException{
 		Logger.info("repository "+repository.findPath("name").asText());
 		Logger.info(" branch name "+ref.asText());
 		JsonNode commitsList = json.findValue("commits");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz");
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		
 		GitNotification gitNotification = new GitNotification();

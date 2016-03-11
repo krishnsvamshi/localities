@@ -9,9 +9,9 @@ create table git_commit (
   commit_id                 varchar(255),
   message                   varchar(255),
   commit_url                varchar(255),
-  committed_at              timestamp,
+  committed_at              date,
   committer_name            varchar(255),
-  email                     varchar(255),
+  committer_email           varchar(255),
   user_name                 varchar(255),
   constraint pk_git_commit primary key (id))
 ;
