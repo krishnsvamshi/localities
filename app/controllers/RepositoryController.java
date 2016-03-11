@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,18 +15,12 @@ import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
-import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.google.gson.JsonObject;
 
 import play.Logger;
-import play.data.DynamicForm;
-import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
-import play.mvc.Http;
-import play.mvc.Http.MultipartFormData;
 import play.mvc.Result;
 
 public class RepositoryController extends Controller {
@@ -81,8 +76,15 @@ public Result getRepos() throws IOException, GitAPIException{
 		JsonNode repository = json.findPath("repository");
 		Logger.info("repository "+repository.findPath("name").asText());
 		Logger.info(" branch name "+ref.asText());
-		JsonNode j1 = json.findPath("commits");
-		Logger.info(" >>>>>> commmits "+j1.asText());
+		JsonNode j1 = json.findValue("commits");
+		Iterator<JsonNode> i= j1.elements();
+		while(i.hasNext()){
+			Logger.info("commits loop");
+			JsonNode commit = i.next();
+			Logger.info("commit id---> "+commit.findValue("id").asText());
+			Logger.info("commit message---> "+commit.findValue("message").asText());
+		}
+		Logger.info(" >>>>>> commmits "+j1.elements());
 		JsonNode j2 = j1.findPath("committer");
 	//	DynamicForm loginData = Form.form().bindFromRequest();
 //	
