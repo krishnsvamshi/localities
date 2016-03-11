@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -65,6 +66,8 @@ public Result getRepos() throws IOException, GitAPIException{
 	return ok();
 }
 	public Result getWebHookJson(){
+		Map<String,String[]> map = request().body().asFormUrlEncoded();
+		Logger.info(" >>>>>>>>>>  json map size "+map.size());
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		return ok(Json.toJson("ok"));
 	}
