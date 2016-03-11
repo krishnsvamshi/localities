@@ -71,13 +71,15 @@ public Result getRepos() throws IOException, GitAPIException{
 	return ok();
 }
 
-	public Result getWebHookJson(){
-		Logger.info("json recieved");
+	public Result getWebHookJson(Long id){
+		Logger.info("json recieved------------------------ : "+id);
 		JsonNode json = request().body().asJson();
+		JsonNode j1 = json.findPath("head_commit");
+		JsonNode j2 = j1.findPath("committer");
 	//	DynamicForm loginData = Form.form().bindFromRequest();
 //	
 //		String ss =loginData.toString();
-		Logger.info(" >>>>>>>>>>  json map size "+json);
+		Logger.info(" >>>>>>>>>>  json map size "+j2.findValue("email").asText());
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		return ok(Json.toJson("asdfasd"));
 	}
