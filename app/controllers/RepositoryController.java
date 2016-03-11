@@ -118,7 +118,8 @@ public Result getRepos() throws IOException, GitAPIException{
 		gitNotification.save();
 		
 		
-		 return ok(views.js.gitNotity.render(gitNotification));
+		 return ok(views.js.gitNotify.render(gitNotification));
+		
 	}
 
 
