@@ -18,4 +18,6 @@ public class GitCommit extends Model {
 	public String committerName;
 	public String committerEmail;
 	public String userName;
+	public static Model.Finder<Long, GitCommit> find = new Model.Finder<Long, GitCommit>(GitCommit.class);
+
 }
