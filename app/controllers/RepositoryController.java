@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +16,8 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 
 import play.Logger;
+import play.data.DynamicForm;
+import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -66,7 +67,9 @@ public Result getRepos() throws IOException, GitAPIException{
 	return ok();
 }
 	public Result getWebHookJson(){
-		Map<String,String[]> map = request().body().asFormUrlEncoded();
+		DynamicForm loginData = Form.form().bindFromRequest();
+	
+		Map<String,String> map =loginData.data();
 		Logger.info(" >>>>>>>>>>  json map size "+map.size());
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		return ok(Json.toJson("ok"));
