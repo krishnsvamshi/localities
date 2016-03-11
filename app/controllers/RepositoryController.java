@@ -20,6 +20,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http.MultipartFormData;
 import play.mvc.Result;
 
 public class RepositoryController extends Controller {
@@ -68,11 +69,11 @@ public Result getRepos() throws IOException, GitAPIException{
 }
 	public Result getWebHookJson(){
 		Logger.info("json recieved");
-		String text =request().body().asText();
+		MultipartFormData ff =request().body().asMultipartFormData();
 	//	DynamicForm loginData = Form.form().bindFromRequest();
 //	
 //		String ss =loginData.toString();
-		Logger.info(" >>>>>>>>>>  json map size "+text);
+		Logger.info(" >>>>>>>>>>  json map size "+ff.asFormUrlEncoded().size());
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		return ok(Json.toJson("ok"));
 	}
