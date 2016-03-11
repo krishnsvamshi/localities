@@ -69,8 +69,8 @@ public Result getRepos() throws IOException, GitAPIException{
 	public Result getWebHookJson(){
 		DynamicForm loginData = Form.form().bindFromRequest();
 	
-		Map<String,String> map =loginData.data();
-		Logger.info(" >>>>>>>>>>  json map size "+map.size());
+		String ss =loginData.toString();
+		Logger.info(" >>>>>>>>>>  json map size "+ss);
 		Logger.info("webhook called >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 		return ok(Json.toJson("ok"));
 	}
