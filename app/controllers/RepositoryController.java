@@ -66,7 +66,6 @@ public Result getRepos() throws IOException, GitAPIException{
     	            System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
     	            count++;
     	        }
-    	        
     	        System.out.println("Had " + count + " commits overall on test-branch");
     	   }
      }
