@@ -117,9 +117,15 @@ public Result getRepos() throws IOException, GitAPIException{
 		gitNotification.pusherEmail = json.findValue("pusher").findValue("email").asText();
 		gitNotification.save();
 		
-		
+		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> calling gitNotify page");
 		 return ok(views.js.gitNotify.render(gitNotification));
 		
+	}
+	public Result chatRoom(){
+		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
+		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
+		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
+		return ok("");
 	}
 
 
