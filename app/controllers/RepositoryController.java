@@ -90,6 +90,7 @@ public Result getRepos() throws IOException, GitAPIException{
 		gitNotification.notificationTitle="BB8";
 		gitNotification.repositoryBranch=ref.asText().replace("refs/heads/", "");
 		gitNotification.repository = json.findPath("repository").findValue("name").asText();
+		gitNotification.originJson = json.toString();
 		Iterator<JsonNode> i= commitsList.elements();
 		while(i.hasNext()){
 			GitCommit commit = new GitCommit();

@@ -24,6 +24,7 @@ create table git_notification (
   no_of_commits             integer,
   committed_by              varchar(255),
   pusher_email              varchar(255),
+  origin_json               TEXT,
   constraint pk_git_notification primary key (id))
 ;
 
