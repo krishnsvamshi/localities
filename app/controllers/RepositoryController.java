@@ -93,7 +93,6 @@ public Result getRepos() throws IOException, GitAPIException{
 		gitNotification.originJson = json.toString();
 		Iterator<JsonNode> i= commitsList.elements();
 		while(i.hasNext()){
-			
 			GitCommit commit = new GitCommit();
 			JsonNode jsonCommit = i.next();
 			commit.commitId = jsonCommit.findValue("id").asText();
