@@ -12,4 +12,4 @@ GET     /get-source/:state/:district                 controllers.Application.get
 GET     /get-source/:state/:district/:city                 controllers.Application.getPostSource(state : String,district: String,city:String)
 GET     /get-source/:state/:district/:city/:post  controllers.Application.saveLocality(state : String,district: String,city:String,post:String)
 GET     /get-repo                                  controllers.RepositoryController.getRepos()
-POST     /get-webhook-reponse/:id                      controllers.RepositoryController.getWebHookJson(id:Long)
+POST     /get-webhook-response/:id                      controllers.RepositoryController.getWebHookJson(id:Long)
