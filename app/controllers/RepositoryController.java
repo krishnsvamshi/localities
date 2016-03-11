@@ -118,10 +118,12 @@ public Result getRepos() throws IOException, GitAPIException{
 		gitNotification.save();
 		
 		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> calling gitNotify page");
-		 return ok(views.js.gitNotify.render(gitNotification));
+	   String messagesPage = views.html.GitNotification.render(gitNotification).toString();
+		 return ok();
 		
 	}
-	public Result chatRoom(){
+	public Result chatRoom(Long id){
+		Logger.info("dsjkfhjksdf    >>"+id);
 		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
 		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
 		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
