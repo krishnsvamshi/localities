@@ -9,7 +9,7 @@ create table git_commit (
   commit_id                 varchar(255),
   message                   varchar(255),
   commit_url                varchar(255),
-  committed_at              date,
+  committed_at              timestamp,
   committer_name            varchar(255),
   committer_email           varchar(255),
   user_name                 varchar(255),
