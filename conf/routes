@@ -13,3 +13,4 @@ GET     /get-source/:state/:district/:city                 controllers.Applicati
 GET     /get-source/:state/:district/:city/:post  controllers.Application.saveLocality(state : String,district: String,city:String,post:String)
 GET     /get-repo                                  controllers.RepositoryController.getRepos()
 POST     /get-webhook-response/:id                      controllers.RepositoryController.getWebHookJson(id:Long)
+GET      /get-chat-room                                controllers.RepositoryController.chatRoom()
