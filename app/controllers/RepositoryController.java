@@ -78,7 +78,9 @@ public Result getRepos() throws IOException, GitAPIException{
 		Logger.info("json recieved------------------------ : "+id);
 		JsonNode json = request().body().asJson();
 		JsonNode ref = json.findPath("ref");
-		Logger.info(ref.asText());
+		JsonNode repository = json.findPath("repository");
+		Logger.info("repository "+repository.findPath("name").asText());
+		Logger.info(" branch name "+ref.asText());
 		JsonNode j1 = json.findPath("commits");
 		
 		JsonNode j2 = j1.findPath("committer");
