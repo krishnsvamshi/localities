@@ -119,6 +119,7 @@ public Result getRepos() throws IOException, GitAPIException{
 		
 		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> calling gitNotify page");
 	   String messagesPage = views.html.GitNotification.render(gitNotification).toString();
+	   Logger.info(messagesPage);
 		 return ok();
 		
 	}
