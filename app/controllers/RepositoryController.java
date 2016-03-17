@@ -31,6 +31,7 @@ import play.mvc.Result;
 public class RepositoryController extends Controller {
 
 	
+	
 	private static Map<String, String> searchQuery = new HashMap<String, String>();
 	private Git git;
 public Result getRepos() throws IOException, GitAPIException{
