@@ -29,6 +29,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 public class RepositoryController extends Controller {
+	Logger.info("logger added");
 	private static Map<String, String> searchQuery = new HashMap<String, String>();
 	private Git git;
 public Result getRepos() throws IOException, GitAPIException{
