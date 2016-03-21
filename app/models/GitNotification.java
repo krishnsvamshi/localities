@@ -22,6 +22,7 @@ public class GitNotification extends Model{
 	public String pusherEmail;
 	@Column(columnDefinition="TEXT")
 	public String originJson;
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	public List<GitCommit> commitsList = new ArrayList<GitCommit>();
 	public static Model.Finder<Long, GitNotification> find = new Model.Finder<Long, GitNotification>(GitNotification.class);
