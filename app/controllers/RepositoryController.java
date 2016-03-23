@@ -133,6 +133,13 @@ public Result getRepos() throws IOException, GitAPIException{
 		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
 		return ok("");
 	}
+	public Result chatRoom1(Long id){
+		Logger.info("dsjkfhjksdf    >>"+id);
+		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
+		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
+		Logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>> from chatRoom method");
+		return ok("");
+	}
 
 
 }
