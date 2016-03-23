@@ -91,7 +91,7 @@ public class Application extends Controller {
 	   details.save();
 	   
 	   
-	   
+	   Logger.info("this is test comment from git");
 	   
 	   
 	   Logger.info(" ====> "+state+" "+district+" "+city+" "+post);
