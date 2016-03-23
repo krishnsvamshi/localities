@@ -106,10 +106,7 @@ public class Application extends Controller {
 	   details.locality = post;
 	   details.save();
 	   
-	   
-	   
-	   
-	   
+	
 	   Logger.info(" ====> "+state+" "+district+" "+city+" "+post);
 	   return ok();
    }
