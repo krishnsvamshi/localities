@@ -110,7 +110,8 @@ public class Application extends Controller {
 	   Logger.info(" ====> "+state+" "+district+" "+city+" "+post);
 	   return ok();
    }
-   public Result saveLocality3(String state,String district,String city,String post) {
+  
+   public Result saveLocality4(String state,String district,String city,String post) {
 	   IndiaDetails details = new IndiaDetails();
 	   details.state = state;
 	   details.district = district;
@@ -125,6 +126,5 @@ public class Application extends Controller {
 	   Logger.info(" ====> "+state+" "+district+" "+city+" "+post);
 	   return ok();
    }
-   
    
 }
