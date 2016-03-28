@@ -40,6 +40,7 @@ public Result getRepos() throws IOException, GitAPIException{
 	 client.setCredentials("vamshikrishnam", "");
      RepositoryService service = new RepositoryService(client);
      
+     
      List<Repository> repo = service.getRepositories();
      System.out.println(">>>>>>>>> "+repo.toString());
      for(Repository rep : repo){
