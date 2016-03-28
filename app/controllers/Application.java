@@ -26,7 +26,6 @@ public class Application extends Controller {
 	   
 	   return ok(urlString);
    }
-   
    public Result getCitySource(String state,String district){
 	   String urlString = "";
 	  /* try
